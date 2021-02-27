@@ -8,7 +8,10 @@ def index(request):
 
     if request.method == 'POST':
         form = CityForm(request.POST)
-        form.save()
+        if form in City.object.all():
+            print('City already added')
+        else:
+            form.save()
 
     form = CityForm()
 
